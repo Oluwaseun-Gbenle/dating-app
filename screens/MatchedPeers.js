@@ -12,16 +12,17 @@ const MatchedPeers = () => {
   const { params } = useRoute();
   const { matchedPeer, user } = params;
   const navigation = useNavigation();
+  
 
   return (
     <SafeAreaView className="bg-red-500 flex-1 opacity-90">
-      <View className="pt-20">
+      <View className="pt-40">
         <View className="items-center">
-        <Image
-          resizeMode="contain"
-          className="h-20 w-1/2"
-          source={require("../assets/tinder-match.png")}
-        />
+          <Image
+            resizeMode="contain"
+            className="h-20 w-1/2"
+            source={require("../assets/tinder-match.png")}
+          />
         </View>
         <Text className="text-white font-bold text-center mt-2">
           You and {matchedPeer.firstName} {matchedPeer.lastName} have liked
@@ -38,7 +39,10 @@ const MatchedPeers = () => {
           />
         </View>
         <TouchableOpacity
-          onPress={() => navigation.navigate("Chat")}
+          onPress={() => {
+            navigation.goBack();
+            navigation.navigate("Chat");
+          }}
           className="rounded-3xl bg-white mt-20 py-5 mx-12"
         >
           <Text className="text-center">Start Chat</Text>
